@@ -2,7 +2,7 @@
 import 'package:currency_app/providers/meal_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
- // update your path
+// update your path
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
@@ -10,7 +10,7 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 90,
+      height: 60,
       child: Consumer<CategoriesProvider>(
         builder: (context, provider, _) {
           /// Loading State
@@ -44,17 +44,14 @@ class Categories extends StatelessWidget {
           return ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: provider.categories.length,
-            separatorBuilder: (_, __) => SizedBox(width: 12),
+            separatorBuilder: (_, __) => SizedBox(width: 14),
             itemBuilder: (context, index) {
               final category = provider.categories[index];
               // return _categoryItem(category.name, category.thumbnail);
               return GestureDetector(
-  onTap: () {
-    
-  },
-  child: _categoryItem(category.name, category.thumbnail),
-);
-
+                onTap: () {},
+                child: _categoryItem(category.name, category.thumbnail),
+              );
             },
           );
         },
@@ -65,7 +62,7 @@ class Categories extends StatelessWidget {
   /// --- UI stays EXACTLY the same as yours ---
   Widget _categoryItem(String title, String imagePath) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+      padding: EdgeInsets.only(right: 25.0),
       decoration: BoxDecoration(
         color: Color(0xFF2E2E2E),
         borderRadius: BorderRadius.circular(50),
@@ -73,7 +70,7 @@ class Categories extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: 48,
+            height: 60,
             width: 48,
             decoration: BoxDecoration(
               shape: BoxShape.circle,

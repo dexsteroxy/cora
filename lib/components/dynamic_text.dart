@@ -27,7 +27,7 @@ class DynamicText extends StatelessWidget {
           child: Text(
             leftText,
             style: const TextStyle(
-              color: Colors.black,
+              // color: Colors.black,
               fontSize: 22,
               fontWeight: FontWeight.bold,
               decoration: TextDecoration.none, 
@@ -38,16 +38,14 @@ class DynamicText extends StatelessWidget {
      
         GestureDetector(
           onTap: onRightTap,
-          child: Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: Text(
-              rightText,
-              style: const TextStyle(
-                    // link-style color
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                
-              ),
+          child: Text(
+            rightText,
+            style: const TextStyle(
+                  // link-style color
+                  color: Color(0xFF8E8E93),
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              
             ),
           ),
         ),
