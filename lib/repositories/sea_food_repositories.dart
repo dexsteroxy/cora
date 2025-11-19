@@ -1,24 +1,6 @@
 import 'package:currency_app/model/apitypes.dart';
-import 'package:dio/dio.dart';
+// import 'package:dio/dio.dart';
 import '../services/dio_client.dart';
-
-// class MealRepository {
-//   final DioClient dioClient;
-
-//   MealRepository(this.dioClient);
-
-//   Future<List<SeaFood>> getSeafoodMeals() async {
-//     try {
-//       Response response = await dioClient.dio.get("filter.php?c=Seafood");
-
-//       List mealsJson = response.data["meals"];
-
-//       return mealsJson.map((meal) => SeaFood.fromJson(meal)).toList();
-//     } catch (e) {
-//       throw Exception("Failed to load meals: $e");
-//     }
-//   }
-// }
 
 
 class CategoriessRepository {
@@ -26,17 +8,57 @@ class CategoriessRepository {
 
   CategoriessRepository(this.dioClient);
 
-  Future<List<Categoriess>> getCategoriess() async {
+  Future<List<dynamic>> getCategories() async {
+    final response = await dioClient.dio.get(
+      "https://www.themealdb.com/api/json/v1/1/categories.php",
+    );
+    return response.data["categories"];
+  }
+
+  Future<List<dynamic>> getMealsByCategory(String category) async {
+    final response = await dioClient.dio.get(
+      "https://www.themealdb.com/api/json/v1/1/filter.php?c=$category",
+    );
+    return response.data["meals"];
+  }
+}
+
+
+
+
+
+class MealsRepository {
+  final DioClient dioClient;
+
+  MealsRepository(this.dioClient);
+
+  /// Get meals inside a category (short data)
+  Future<List<MealShort>> getMealsByCategory(String category) async {
     try {
-      Response response = await dioClient.dio.get("categories.php");
+      final response = await dioClient.dio.get(
+        "filter.php",
+        queryParameters: {"c": category},
+      );
 
-      List categoriesList = response.data["categories"];
+      List mealsJSON = response.data["meals"] ?? [];
 
-      return categoriesList
-          .map((categoryJson) => Categoriess.fromJson(categoryJson))
-          .toList();
+      return mealsJSON.map((json) => MealShort.fromJson(json)).toList();
     } catch (e) {
-      throw Exception("Failed to load the categories: $e");
+      throw Exception("Failed to fetch meals: $e");
+    }
+  }
+
+  /// Get full meal details
+  Future<MealFull> getMealDetails(String id) async {
+    try {
+      final response = await dioClient.dio.get(
+        "lookup.php",
+        queryParameters: {"i": id},
+      );
+
+      return MealFull.fromJson(response.data["meals"][0]);
+    } catch (e) {
+      throw Exception("Failed to fetch meal details: $e");
     }
   }
 }

@@ -1,7 +1,9 @@
+
 import 'package:currency_app/components/categories.dart';
 import 'package:currency_app/components/dynamic_text.dart';
 import 'package:currency_app/components/homebanner.dart';
 import 'package:currency_app/components/search.dart';
+
 import 'package:currency_app/providers/meal_provider.dart';
 
 import 'package:flutter/material.dart';
