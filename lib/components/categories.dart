@@ -36,7 +36,7 @@ class Categories extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 18, vertical: 10),
                         decoration: BoxDecoration(
-                          color: isActive ? Colors.orange : Colors.grey.shade800,
+                          color: isActive ? Color(0xFFFFD700) : Colors.grey.shade800,
                           borderRadius: BorderRadius.circular(25),
                         ),
                         child: Center(

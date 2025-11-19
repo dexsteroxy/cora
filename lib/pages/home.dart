@@ -3,6 +3,8 @@ import 'package:currency_app/components/categories.dart';
 import 'package:currency_app/components/dynamic_text.dart';
 import 'package:currency_app/components/homebanner.dart';
 import 'package:currency_app/components/search.dart';
+import 'package:currency_app/components/search_page.dart';
+// import 'package:currency_app/components/search.dart';
 
 import 'package:currency_app/providers/meal_provider.dart';
 
@@ -105,10 +107,22 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 20.0),
 
                 // Search Bar
-                Padding(
-                  padding: const EdgeInsets.only(left: 19.0, right: 19.0),
-                  child: SizedBox(child: Search()),
-                ),
+Padding(
+  padding: const EdgeInsets.only(left: 19.0, right: 19.0),
+  child: GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SearchPage()),
+      );
+    },
+    child: AbsorbPointer(
+      child: Search(onSearch: (_) {}),
+    ),
+  ),
+),
+
+
 
                 SizedBox(height: 20.0),
 

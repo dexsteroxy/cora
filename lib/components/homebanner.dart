@@ -29,7 +29,7 @@ class Homebanner extends StatelessWidget {
                             ),
                             SizedBox(height: 6.0),
                             Text(
-                              'Free delivery, lower fees, &',
+                              'This app was created by Sixtus to help you make great recipes',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 13.0,
@@ -38,7 +38,7 @@ class Homebanner extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  '10%',
+                                  '100%',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20.0,
@@ -47,7 +47,7 @@ class Homebanner extends StatelessWidget {
                                 ),
                                 SizedBox(width: 4.0),
                                 Text(
-                                  'cashback, pickups!',
+                                  'Free!',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 13.0,
@@ -63,7 +63,7 @@ class Homebanner extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               child: Text(
-                                'Order Now',
+                                'Enjoy',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 14.0,

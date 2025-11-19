@@ -9,6 +9,7 @@ import 'repositories/sea_food_repositories.dart';
 
 // providers
 import 'providers/meal_provider.dart';
+ // <-- Add this
 
 // pages
 import 'pages/botton_nav.dart';
@@ -35,6 +36,10 @@ class MyApp extends StatelessWidget {
             Provider.of<CategoriessRepository>(context, listen: false),
           ),
         ),
+
+        ChangeNotifierProvider<BookingProvider>(
+          create: (_) => BookingProvider(), // <-- Add this provider
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -45,4 +50,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
