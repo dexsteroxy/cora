@@ -1,3 +1,5 @@
+import 'package:currency_app/pages/botton_nav.dart';
+// import 'package:currency_app/pages/home.dart';
 import 'package:currency_app/providers/meal_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +17,16 @@ class Booking extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF1C1C1E),
       appBar: AppBar(
+          automaticallyImplyLeading: false, // Remove default back arrow
+  leading: IconButton(
+    icon: const Icon(Icons.arrow_back, color: Colors.white),
+    onPressed: () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const BottomNav()),
+      );
+    },
+  ),
         title: const Text("My Bookings"),
         backgroundColor: const Color(0xFF1C1C1E),
       ),
