@@ -330,21 +330,28 @@ class _DetailsPageState extends State<DetailsPage> {
     }
   }
 
-  Future<void> _launchVideo() async {
-    final url = meal?["strYoutube"];
-    if (url == null || !url.startsWith("http")) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("No valid video available")));
-      return;
-    }
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Could not open video")));
-    }
+ Future<void> _launchVideo() async {
+  String? url = meal?["strYoutube"];
+  if (url == null || !url.startsWith("http")) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("No valid video available")));
+    return;
   }
+
+  // Force HTTPS if the URL starts with http
+  if (url.startsWith("http://")) {
+    url = url.replaceFirst("http://", "https://");
+  }
+
+  final uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
+  } else {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("Could not open video")));
+  }
+}
+
 
   Future<void> _shareMeal() async {
     if (meal != null) {

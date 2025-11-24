@@ -43,37 +43,27 @@ SizedBox(height: 30.0,),
             ),
 SizedBox(height: 50.0,),
             ElevatedButton(
-              onPressed:() {
-                Navigator.pushNamed(context, "/homepage");
-              },
-              child: Container(
-                height: 70,
-                margin: EdgeInsets.only(left: 30.0, right: 30.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40.0),
-                   color: Colors.grey.shade900,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                   
-              
-                    SizedBox(width: 20.0,),
-                
-                       Text(
-                  "Get Started Now ",
-                  
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                  ],
-                ),
-              ),
-            )
+  onPressed: () {
+    Navigator.pushNamed(context, "/homepage");
+  },
+  style: ElevatedButton.styleFrom(
+    backgroundColor:  Colors.grey.shade800, // Red background
+    padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 20),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(40),
+    ),
+  ),
+  child: const Text(
+    "Get Started Now",
+    style: TextStyle(
+      color: Colors.white,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    ),
+    textAlign: TextAlign.center,
+  ),
+)
+
           ],
         ),
       ),
