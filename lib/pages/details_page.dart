@@ -330,37 +330,27 @@ class _DetailsPageState extends State<DetailsPage> {
     }
   }
 
-Future<void> _launchVideo() async {
-  final youtubeUrl = meal?["strYoutube"];
-  if (youtubeUrl == null || youtubeUrl.isEmpty) {
-    ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("No valid video available")));
+ Future<void> _launchVideo() async {
+  String? url = meal?["strYoutube"];
+  if (url == null || !url.startsWith("https")) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("No valid video available")));
     return;
   }
 
-  final uriApp = Uri.parse(youtubeUrl.replaceFirst("https://www.youtube.com/watch?v=", "youtube://"));
-  final uriBrowser = Uri.parse(youtubeUrl);
+  // Force HTTPS if the URL starts with http
+  if (url.startsWith("http://")) {
+    url = url.replaceFirst("http://", "https://");
+  }
 
-  try {
-    // Try to open YouTube app first
-    if (await canLaunchUrl(uriApp)) {
-      await launchUrl(uriApp, mode: LaunchMode.externalApplication);
-    } 
-    // Fallback to browser
-    else if (await canLaunchUrl(uriBrowser)) {
-      await launchUrl(uriBrowser, mode: LaunchMode.externalApplication);
-    } 
-    // If both fail
-    else {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Could not open video")));
-    }
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Could not open video")));
+  final uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
+  } else {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("Could not open video")));
   }
 }
-
 
 
   Future<void> _shareMeal() async {
