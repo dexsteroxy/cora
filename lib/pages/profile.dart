@@ -1,3 +1,4 @@
+import 'package:currency_app/pages/botton_nav.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
@@ -13,6 +14,16 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       backgroundColor: Color(0xFF1C1C1E),
       appBar: AppBar(
+               automaticallyImplyLeading: false, // Remove default back arrow
+  leading: IconButton(
+    icon: const Icon(Icons.arrow_back, color: Colors.white),
+    onPressed: () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const BottomNav()),
+      );
+    },
+  ),
         backgroundColor: Colors.black,
         elevation: 0,
         centerTitle: true,
