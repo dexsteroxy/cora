@@ -43,8 +43,8 @@ class _BottomNavState extends State<BottomNav> {
 
         items: const [
           Icon(Icons.home_outlined, color: Colors.white, size: 30),
-          Icon(Icons.book_outlined, color: Colors.white, size: 30),
-          Icon(Icons.person_outline, color: Colors.white, size: 30),
+          Icon(Icons.add, color: Colors.white, size: 30),
+          Icon(Icons.ac_unit_outlined, color: Colors.white, size: 30),
         ],
       ),
     );

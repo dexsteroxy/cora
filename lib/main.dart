@@ -1,3 +1,5 @@
+// import 'package:currency_app/pages/home.dart';
+import 'package:currency_app/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -45,8 +47,17 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Meal App',
         theme: ThemeData.dark(),
-        home: const BottomNav(),
+        home: const Signup(),
+
+          initialRoute: "/",
+      routes: {
+       "/homepage": (context) => const BottomNav()
+      },
       ),
+
+       
     );
+
+    
   }
 }
